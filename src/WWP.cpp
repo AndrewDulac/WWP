@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include "Communication.h"
 
 enum state { NORM, BRAKE };
