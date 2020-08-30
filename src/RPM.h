@@ -8,32 +8,31 @@ unsigned long count;
 unsigned long RPM_Timer;
 
 
-void readRPM()
+int readRPM()
 {
   switch (stopwatch)
   {
     case 1:
-     
       RPM_Timer = micros();
       if(analogRead(Sensor)> Reflect_Val)
       {
         stopwatch = 2;
       }
-      break;
+      return RPM;
     case 2:
       if(analogRead(Sensor)< Reflect_Val)
       {
         stopwatch = 3;
       }
-      
-      break;
+      return RPM;
     case 3:
       if(analogRead(Sensor)> Reflect_Val)
       {
         count = micros() - RPM_Timer;
-        RPM = (60000000/(count))/4; // 60 * 1000 * 1000
         stopwatch=1;
+        return (60000000/(count))/4; // 60 * 1000 * 1000
       }
-      break;
+      default:
+      return RPM;
   }
 }

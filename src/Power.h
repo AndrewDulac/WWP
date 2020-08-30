@@ -7,10 +7,28 @@ int maxPower;
 
 double getVoltage( int vPin )
 {
+  double voltage = analogRead(vPin);
+  //Serial.println(voltage);    //USED TO DIAGNOSE SENSOR ERRORS
+  double Voltage = voltage * (25.0/ 1023.0);
+
+  return Voltage;
+}
+
+double getVoltageCondensed( int vPin )
+{
   return (analogRead(vPin) * (25.0/1023.0));
 }
 
 double getCurrent(int cPin)
+{
+  double current = analogRead(cPin);
+  //Serial.println(current);    //USED TO DIAGNOSE SENSOR ERRORS
+  double Current = ((((current/1023)*(10))-4.99)*2.85);
+ 
+  return Current;
+}
+
+double getCurrentCondensed(int cPin)
 {
   return((((analogRead(cPin)/1023)*(10))-4.99)*2.85);
 }
