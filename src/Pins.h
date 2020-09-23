@@ -2,12 +2,12 @@
 
 int currentPin = A0;    // current sensor input 
 int voltagePin = A1;    // voltage sensor input
-int Sensor = A2;        // RPM sensor input
+int Sensor = 2;        // RPM sensor input
 int emergencySwitch = A3;
 int manualCtrl = A4;
 int voltagePin_2 = A6;
 
-int relay_ICtrl = 2; 
+int relay_ICtrl = 8; 
 // Relay #1 (switch off current control)
 int relay_Cap[] = {3, 4}; 
 // Relays #2 and #3 (Capacitor Power during braking)
@@ -26,6 +26,7 @@ void ConfigurePins()
   pinMode(voltagePin, INPUT);
   pinMode(voltagePin_2, INPUT);
   pinMode(Sensor, INPUT);
+  attachInterrupt(digitalPinToInterrupt(Sensor), rpmInterrupt, RISING);
   pinMode(emergencySwitch, INPUT);
   pinMode(relay_ICtrl, OUTPUT);
   pinMode(relay_Cap[0], OUTPUT);
