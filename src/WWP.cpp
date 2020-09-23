@@ -18,6 +18,7 @@ void setup()
 {
   Serial.begin(9600); 
   ConfigurePins();
+  RPM_timer = micros();
   Timer = millis();
   Sample = millis();
 }
@@ -28,10 +29,10 @@ void setup()
  */
 void loop() 
 {
+  readRPM();
   if( millis() - Timer >= 1000)
   {
     Serial.println(emerSwitchVal);
-    readRPM();
     refreshPowerData();
     printData();    
     Timer += 1000; 

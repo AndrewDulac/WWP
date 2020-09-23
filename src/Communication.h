@@ -1,6 +1,6 @@
+#include "RPM.h"
 #include "Pins.h"
 #include "Power.h"
-#include "RPM.h"
 #include "Pitch.h"
 #include "CurCtrl.h"
 
