@@ -2,7 +2,6 @@
 #include "Pins.h"
 #include "Power.h"
 #include "Pitch.h"
-#include "CurCtrl.h"
 
 void printData(double rpm, double power, double voltIn, double CurrIn, double Vrectifier)
 {
