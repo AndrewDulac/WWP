@@ -3,7 +3,8 @@
 
 unsigned long Timer;
 unsigned long Sample;
-
+enum SWITCH {OPEN, CLOSE, HOLD};
+SWITCH back_EMF;
 /* This is our setup loop - it runs once
  *  1) initializes all of the variables (for logic purposes)
  *  2) sets all input and output pins
@@ -33,4 +34,25 @@ void loop()
     printData();    
     Timer += 1000; 
   }                   
+  switch(back_EMF){
+    case OPEN:
+    digitalWrite(onCoil,HIGH);
+    delay(15);
+    digitalWrite(onCoil,LOW);
+    back_EMF = HOLD;
+    break;
+
+    case CLOSE:
+    digitalWrite(offCoil,HIGH);
+    delay(15);
+    digitalWrite(offCoil,LOW);
+    back_EMF = HOLD;
+    break;
+
+    case HOLD:
+    break;
+    
+    default:
+    back_EMF = HOLD;
+  }
 }
