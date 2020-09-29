@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include "Communication.h"
+#include "LowPower.h"
 
 unsigned long Timer;
 unsigned long Sample;
@@ -33,7 +34,11 @@ void loop()
     refreshPowerData();
     printData();    
     Timer += 1000; 
-  }                   
+  }        
+  if(Current == 0 && Voltage >= 1 && RPM >= 200)
+  {
+    back_EMF = CLOSE;
+  }           
   switch(back_EMF){
     case OPEN:
     digitalWrite(onCoil,HIGH);
@@ -47,6 +52,7 @@ void loop()
     delay(15);
     digitalWrite(offCoil,LOW);
     back_EMF = HOLD;
+    LowPower.powerDown(SLEEP_2S, ADC_OFF, BOD_OFF);
     break;
 
     case HOLD:
