@@ -19,6 +19,7 @@ void setup()
   RPM_timer = micros();
   Timer = millis();
   Sample = millis();
+  back_EMF = OPEN;
 }
 
 /* This is our main loop - it runs as fast as it can
