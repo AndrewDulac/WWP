@@ -2,7 +2,7 @@
 
 #define currentPin A0  // current sensor input 
 #define voltagePin A1    // voltage sensor input
-#define Sensor 2      // RPM sensor input
+#define Sensor 2    // RPM sensor input
 #define emergencySwitch A3
 #define manualCtrl A4
 #define voltagePin_2 A6
