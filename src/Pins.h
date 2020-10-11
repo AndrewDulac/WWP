@@ -1,23 +1,22 @@
 //PWM Pins include 3, 5, 6, 9, 10, 11
 
-int currentPin = A0;    // current sensor input 
-int voltagePin = A1;    // voltage sensor input
-int Sensor = A2;        // RPM sensor input
-int emergencySwitch = A3;
-int manualCtrl = A4;
-int voltagePin_2 = A6;
+#define currentPin A0  // current sensor input 
+#define voltagePin A1    // voltage sensor input
+#define Sensor 2    // RPM sensor input
+#define emergencySwitch A3
+#define manualCtrl A4
+#define voltagePin_2 A6
 
-int relay_ICtrl = 2; 
-// Relay #1 (switch off current control)
+#define relay_ICtrl 8   // Relay #1 (switch off current control)
 int relay_Cap[] = {3, 4}; 
 // Relays #2 and #3 (Capacitor Power during braking)
 int relay_BEMF[] = {5, 6, 7}; 
 // Relays #4, #5 , #6 (Back EMF Brake)
 
-int pitchCtrl = 9;
-// Pitch Position PWM pin
-int pwrControl = 10;
-// Current Power PWM
+#define pitchCtrl  9   // Pitch Position PWM pin
+#define pwrControl 10  // Current Power PWM
+#define onCoil 11      //On Coil PIN
+#define offCoil 12     //OFF coil PIN
 
 void ConfigurePins()
 {
@@ -26,6 +25,7 @@ void ConfigurePins()
   pinMode(voltagePin, INPUT);
   pinMode(voltagePin_2, INPUT);
   pinMode(Sensor, INPUT);
+  attachInterrupt(digitalPinToInterrupt(Sensor), rpmInterrupt, RISING);
   pinMode(emergencySwitch, INPUT);
   pinMode(relay_ICtrl, OUTPUT);
   pinMode(relay_Cap[0], OUTPUT);
@@ -35,7 +35,8 @@ void ConfigurePins()
   pinMode(relay_BEMF[2], OUTPUT);
   pinMode(pitchCtrl, OUTPUT);
   pinMode(pwrControl, OUTPUT);
-
+  pinMode(onCoil, OUTPUT);
+  pinMode(offCoil, OUTPUT);
   
   digitalWrite(relay_ICtrl, LOW);
   digitalWrite(relay_Cap[0], LOW);
