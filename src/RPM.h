@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 //Initialize variables
 int ButtonState = 1; // Create int named ButtonState start at idle state
 int stopwatch = 1;
@@ -36,3 +37,25 @@ int readRPM()
       return RPM;
   }
 }
+=======
+//Initialize variables
+int count_max = 10;
+double RPS = 0.0, RPM = 0.0, poles = 12.0, edge_count = 0.0;
+unsigned long RPM_timer;
+
+
+void readRPM()
+{
+  if(edge_count >= count_max)
+  {
+    edge_count = 0.0;
+    RPS = (1000000 * edge_count / (micros() - RPM_timer));
+    RPM = (RPS * 60.0)/poles;
+    RPM_timer = micros();
+  }
+}
+void rpmInterrupt()
+{
+  edge_count++;
+}
+>>>>>>> Stashed changes
