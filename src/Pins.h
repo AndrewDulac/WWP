@@ -1,3 +1,6 @@
+#if !defined(PINS_H)
+#define PINS_H
+
 //PWM Pins include 3, 5, 6, 9, 10, 11
 
 #define currentPin A0  // current sensor input 
@@ -47,3 +50,12 @@ void ConfigurePins()
   digitalWrite(pitchCtrl, LOW);
   digitalWrite(pwrControl, LOW);
 }
+
+
+
+
+#endif // PINS_H
+
+
+
+

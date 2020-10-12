@@ -1,3 +1,6 @@
+#if !defined(POWER_H)
+#define POWER_H
+
 double Current;
 double Voltage;
 double Power;
@@ -29,3 +32,8 @@ void refreshPowerData()
   Voltage = getVoltage(voltagePin);
   Power = getPower();
 }
+
+#endif // POWER_H
+
+
+
