@@ -29,7 +29,6 @@ void setup()
 
 void loop() 
 {
-  readRPM();
   if( millis() - Timer >= 1000)
   {
     refreshPowerData();
