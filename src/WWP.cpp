@@ -2,6 +2,7 @@
 #include "Communication.h"
 #include "LowPower.h"
 
+unsigned long test;
 unsigned long Timer;
 unsigned long Sample;
 enum SWITCH {OPEN, CLOSE, HOLD};
