@@ -19,6 +19,10 @@ double getCurrent(int cPin)
   return((((analogRead(cPin)/1023)*(10))-4.99)*2.85);
 }
 
+double newCurrent(int cPin){
+  return((analogRead(cPin)/245.04)-23.7158);
+}
+
 double getPower()
 {
   double p = ( Current * Voltage );
