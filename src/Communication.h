@@ -16,7 +16,7 @@ void printData()
   Serial.print("Current Requested: ");
   Serial.println(curRequested);
   Serial.print("Current: ");
-  Serial.print(Current);
+  Serial.print(Current,5);
   Serial.println(" A");
   Serial.print("Power: ");
   Serial.print(Power);

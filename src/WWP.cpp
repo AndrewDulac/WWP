@@ -29,9 +29,9 @@ void setup()
 
 void loop() 
 {
+  refreshPowerData();
   if( millis() - Timer >= 1000)
   {
-    refreshPowerData();
     printData();    
     Timer += 1000; 
   }     
