@@ -1,5 +1,5 @@
 //Initialize variables
-double RPM, poles = 20.0;
+double RPM = 0.0, poles = 20.0;
 unsigned long RPM_timer;
 
 void rpmInterrupt()
