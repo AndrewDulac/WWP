@@ -1,3 +1,4 @@
+#pragma once 
 //Initialize variables
 int count_max = 10;
 double RPS = 0.0, RPM = 0.0, poles = 12.0, edge_count = 0.0;
